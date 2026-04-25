@@ -3,9 +3,16 @@
 @tailwind utilities;
 
 :root {
-  color: #0f172a;
-  background: #ffffff;
-  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  color: #111827;
+  background:
+    radial-gradient(circle at top, rgba(249, 115, 22, 0.18), transparent 38%),
+    linear-gradient(180deg, #fff7ed 0%, #ffffff 44%, #fffaf5 100%);
+  font-family: "Aptos", "Inter", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {

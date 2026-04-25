@@ -99,34 +99,40 @@ export default function App() {
   };
 
   return (
-    <main className="min-h-[320px] w-[300px] bg-white font-body text-slate-900">
-      <section className="flex min-h-[320px] flex-col gap-5 p-4">
-        <header className="space-y-1 border-b border-slate-200 pb-4">
-          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-slate-500">
+    <main className="min-h-[320px] w-[300px] bg-transparent font-body text-slate-900">
+      <section className="flex min-h-[320px] flex-col gap-5 border border-orange-100/80 bg-white/90 p-4 shadow-glow backdrop-blur">
+        <header className="space-y-2 border-b border-orange-100 pb-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-orange-600">
             Stop Scrolling
           </p>
-          <h1 className="font-display text-xl text-slate-950">Block X for a fixed time</h1>
-          <p className="text-xs leading-5 text-slate-500">
+          <h1 className="font-display text-[22px] font-semibold tracking-[-0.03em] text-slate-950">
+            Block X for a fixed time
+          </h1>
+          <p className="text-sm leading-5 text-slate-600">
             Opening `x.com` during the timer will close the tab.
           </p>
         </header>
 
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs uppercase tracking-[0.18em] text-slate-500">Status</span>
-            <span className="rounded-full border border-slate-300 px-2 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-slate-700">
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+              Status
+            </span>
+            <span className="border border-orange-200 bg-orange-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-orange-700">
               {blockState.active ? 'Blocking' : 'Idle'}
             </span>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-            <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Remaining</p>
-            <p className="mt-2 font-display text-3xl tracking-tight text-slate-950">
+          <div className="border border-orange-100 bg-gradient-to-br from-orange-50 via-white to-amber-50 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+              Remaining
+            </p>
+            <p className="mt-2 font-mono text-[30px] tracking-[-0.04em] text-slate-950">
               {blockState.active ? formatDuration(remainingMs) : '00:00:00'}
             </p>
-            <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-slate-200">
+            <div className="mt-4 h-2 overflow-hidden bg-orange-100">
               <div
-                className="h-full rounded-full bg-slate-900 transition-[width] duration-700"
+                className="h-full bg-gradient-to-r from-orange-500 to-amber-500 transition-[width] duration-700"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -149,7 +155,7 @@ export default function App() {
               value={minutes}
               onChange={(event) => setMinutes(event.target.value)}
               disabled={blockState.active}
-              className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-base text-slate-950 outline-none transition focus:border-slate-950 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400"
+              className="w-full border border-orange-200 bg-white px-3 py-2 text-base text-slate-950 outline-none transition focus:border-orange-500 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400"
             />
             <span className="text-sm text-slate-500">min</span>
           </div>
@@ -157,7 +163,7 @@ export default function App() {
             type="button"
             onClick={startTimer}
             disabled={blockState.active}
-            className="w-full rounded-xl bg-slate-950 px-3 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
+            className="w-full bg-slate-950 px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
           >
             Start timer
           </button>

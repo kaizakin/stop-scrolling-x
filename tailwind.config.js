@@ -13,8 +13,16 @@ export default {
         glow: '0 24px 80px rgba(15, 23, 42, 0.24)',
       },
       fontFamily: {
-        display: ['"Avenir Next"', '"Segoe UI"', '"Helvetica Neue"', 'sans-serif'],
-        body: ['"Trebuchet MS"', '"Segoe UI"', '"Helvetica Neue"', 'sans-serif'],
+        display: [
+          '"Avenir Next"',
+          '"SF Pro Display"',
+          '"Segoe UI"',
+          '"Helvetica Neue"',
+          'ui-sans-serif',
+          'sans-serif',
+        ],
+        body: ['"Aptos"', '"Inter"', '"Segoe UI"', 'system-ui', 'sans-serif'],
+        mono: ['"SFMono-Regular"', '"Cascadia Code"', '"Consolas"', 'monospace'],
       },
     },
   },
