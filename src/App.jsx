@@ -106,10 +106,10 @@ export default function App() {
             Stop Scrolling
           </p>
           <h1 className="font-display text-[22px] font-semibold tracking-[-0.03em] text-slate-950">
-            Block X for a fixed time
+            Block X and Instagram for a fixed time
           </h1>
           <p className="text-sm leading-5 text-slate-600">
-            Opening `x.com` during the timer will close the tab.
+            Opening `x.com` or `instagram.com` during the timer will close the tab.
           </p>
         </header>
 

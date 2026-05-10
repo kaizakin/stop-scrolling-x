@@ -1,15 +1,15 @@
 const STORAGE_KEY = 'blockState';
 const ALARM_NAME = 'x-block-timer';
-const X_HOSTS = new Set(['x.com', 'www.x.com']);
+const BLOCKED_HOSTS = new Set(['x.com', 'www.x.com', 'instagram.com', 'www.instagram.com']);
 
-function isXUrl(urlString) {
+function isBlockedUrl(urlString) {
   if (!urlString) {
     return false;
   }
 
   try {
     const url = new URL(urlString);
-    return X_HOSTS.has(url.hostname);
+    return BLOCKED_HOSTS.has(url.hostname);
   } catch {
     return false;
   }
@@ -47,12 +47,12 @@ async function closeIfBlocked(tabId, url) {
     return;
   }
 
-  if (isXUrl(url)) {
+  if (isBlockedUrl(url)) {
     await chrome.tabs.remove(tabId);
   }
 }
 
-async function closeExistingXTabs() {
+async function closeExistingBlockedTabs() {
   const tabs = await chrome.tabs.query({});
   const state = await getBlockState();
 
@@ -65,7 +65,7 @@ async function closeExistingXTabs() {
 
   await Promise.all(
     tabs
-      .filter((tab) => tab.id && isXUrl(tab.url))
+      .filter((tab) => tab.id && isBlockedUrl(tab.url))
       .map((tab) => chrome.tabs.remove(tab.id)),
   );
 }
@@ -116,7 +116,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
   }
 
   void chrome.alarms.create(ALARM_NAME, { when: nextState.endTime });
-  void closeExistingXTabs();
+  void closeExistingBlockedTabs();
 });
 
 chrome.alarms.onAlarm.addListener((alarm) => {
