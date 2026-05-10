@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const DEFAULT_MINUTES = 30;
+const DEFAULT_MINUTES = 60;
 const STORAGE_KEY = 'blockState';
 
 function formatDuration(ms) {
